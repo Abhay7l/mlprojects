@@ -20,10 +20,11 @@ list_of_files = [
     "params.yaml",
     "requirements.txt",
     "setup.py",
-    "research/trials.ipynb"
+    "research/trials.ipynb",
+    "templates/index.html",
 ]
 
-
+# this will create above files
 for filepath in list_of_files:
     # this will give us path format as in windows
     filepath = Path(filepath)
