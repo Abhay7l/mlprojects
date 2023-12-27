@@ -3,18 +3,21 @@ from cnnClassifier.components.prepare_callbacks import PrepareCallback
 from cnnClassifier.components.training import Training
 from cnnClassifier import logger
 
+
+
 STAGE_NAME = "Training"
 
 
-class ModelTrainingPipeling:
-    def __init__ (self):
+class ModelTrainingPipeline:
+    def __init__(self):
         pass
-    
+
     def main(self):
         config = ConfigurationManager()
         prepare_callbacks_config = config.get_prepare_callback_config()
         prepare_callbacks = PrepareCallback(config=prepare_callbacks_config)
         callback_list = prepare_callbacks.get_tb_ckpt_callbacks()
+
 
         training_config = config.get_training_config()
         training = Training(config=training_config)
@@ -25,13 +28,15 @@ class ModelTrainingPipeling:
         )
 
 
-if __name__ == "main":
+
+
+if __name__ == '__main__':
     try:
-        locals.info(f"***********************")
-        logger.info(f">>>>> stage {STAGE_NAME} started <<<<<<<<")
-        obj = ModelTrainingPipeling()
+        logger.info(f"*******************")
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        obj = ModelTrainingPipeline()
         obj.main()
-        logger.info(f">>>>>>> stage {STAGE_NAME} completed <<<<<<<<<<\n\nx====================x")
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)
         raise e
